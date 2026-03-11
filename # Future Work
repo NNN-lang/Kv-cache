@@ -1,0 +1,23 @@
+1. Physical KV deletion
+
+Current benchmark uses attention_mask simulation.
+
+Future work:
+
+integration with vLLM paged KV cache for real memory savings.
+
+2. CUDA kernel
+
+Block importance computation can be fused into attention kernel.
+
+3. Dynamic pruning
+
+Trigger pruning based on attention entropy rather than fixed intervals.
+
+4. Multi-request prefix sharing
+
+Combine KV pruning with shared prefix KV cache.
+
+5. Integration with speculative decoding
+
+Reduce KV growth during reasoning chains.
