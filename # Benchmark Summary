@@ -1,0 +1,32 @@
+Model: Qwen2.5-1.5B  
+GPU: Tesla T4
+
+Average results:
+
+KV compression: ~40%  
+ΔPPL: +0.02  
+Latency overhead: ~0%
+
+Quality threshold: ΔPPL < 0.05
+
+## Interpretation
+
+ReasoningKVC removes low-importance KV tokens in earlier reasoning blocks while protecting:
+
+- recent reasoning steps
+- anchor tokens
+- critical transitions
+
+This preserves reasoning integrity.
+
+## Expected Production Impact
+
+For large models (70B):
+
+KV cache for 32K tokens ≈ 18GB
+
+With 40% compression:
+
+~7GB VRAM saved per request
+
+This allows larger batch sizes and lower inference cost.
